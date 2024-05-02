@@ -1,406 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Ravikumar Makwana</title>
-  <meta content="Ravikumar Makwana" name="description">
-  <meta content="Ravi, Ravikumar, Ravikumar Makwana" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.jpg" rel="icon">
-  <link href="assets/img/favicon.jpg" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Ravikumar Makwana</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://in.linkedin.com/in/ravikumar-makwana" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://www.instagram.com/ravikumarmakwana" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
-          <a href="tel:6354508988" class="twitter"><i class="bi bi-phone"></i></a>
-          <a href="mailto:ravikumar.makwana.18@gmail.com" class="google-plus"><i class="bi bi-envelope"></i></a>
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Work & Experience</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-code"></i> <span>Projects</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1cxFQkXsa-Jh-QwqP7vE_wAMxoXGGpQpN/view?usp=sharing" class="nav-link" target="_blank"><i class="bx bx-book"></i> <span>Resume</span></a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravikumar Makwana</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Ravikumar Makwana</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
         </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Ravikumar Makwana</h1>
-      <p>I'm <span class="typed" data-typed-items="Computer Engineer"></span></p>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About</h2>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Ravikumar Makwana</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/main.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Computer Engineer</h3>
-            <div class="row">
-              <div class="col-lg-12">
-                <p style="text-align: justify;">I'm a quick learner and self-motivated individual, with over 2.8 years of professional experience as a Software Engineer. Specializing in C# programming and structured, test-driven software development, I thrive on solving complex problems and delivering high-quality solutions to meet the needs of our customers.</p>
-                <p style="text-align: justify;">I'm most comfortable with C#, .NET Core, and relational databases like MySQL and MSSQL, but I'm also flexible and eager to work with new technologies and programming languages.</p>
-                <p style="text-align: justify;">My highest qualification is a Bachelor of Computer Engineering, completed in 2021 from V.V.P. Engineering College.</p>
-                <p style="text-align: justify;">I thrive in collaborative environments and enjoy working closely with fellow engineers and stakeholders to deliver solutions that exceed expectations. Whether it's optimizing performance, architecting robust systems, or tackling challenging problems, I'm always up for the task.</p>
-                <br>
-                <br>
-                <ul>
-                  <li>
-                    <div class="col-lg-6">
-                      <b>LinkedIn: <a href="https://www.linkedin.com/in/ravikumar-makwana" target="_blank">ravikumar-makwana</a></b>
-                    </div>
-                    <div class="col-lg-6">
-                      <b>GitHub: <a href="https://github.com/ravikumarmakwana" target="_blank">ravikumarmakwana</a></b>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="col-lg-6">
-                      <b>Leetcode: <a href="https://leetcode.com/RavikumarMakwana" target="_blank">RavikumarMakwana</a></b>
-                    </div>
-                    <div class="col-lg-6">
-                      <b>HackerRank: <a href="https://www.hackerrank.com/Ravi_makwana" target="_blank">Ravi_makwana</a></b>
-                    </div>
-                  </li>
-                </ul>  
-              </div>
-            </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#education" onclick="toggleMenu()">Education</a></li>
         </div>
       </div>
-    </section><!-- End About Section -->
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-        <div class="section-title">
-          <h2>Work & Experience</h2>
-          <p>To become a successful expert in the field of Computer Engineering by channelizing my technical knowledge and skills to ensure personal and professional growth and to contribute to the prosperity of the organization.</p>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic.jpg" alt="John Doe profile picture" style=" border-radius: 50%;" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Ravikumar Makwana</h1>
+        <p class="section__text__p2">Software Engineer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Ravikumar Makwana.pdf')"
+          >
+            Download CV
+          </button>
         </div>
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Bachelor of Engineering - Computer Engineering</h4>
-              <h5>2017 - 2021</h5>
-              <p><em>V.V.P. Engineering College, Rajkot</em></p>
-              <p>
-                <b>Overall CGPA&nbsp;:&nbsp;</b>9.80
-                <br/>
-                <b>Overall CPI&nbsp;:&nbsp;</b>9.48
-                <br/>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>HSC - 12<sup>th</sup> Science</h4>
-              <h5>2015 - 2017</h5>
-              <p><em>Patanjali Science School, Rajkot</em></p>
-              <p>
-                <b>Overall Percentage&nbsp;</b>:&nbsp;78 %
-                <br/>
-                <b>Percentile</b>&nbsp;:&nbsp; 91.68 %
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>SSC - 10<sup>th</sup></h4>
-              <h5>2014 - 2015</h5>
-              <p><em>Shree Gyandeep School, Rajkot</em></p>
-              <p>
-                <b>Overall Percentage</b>&nbsp;:&nbsp;81 %
-                <br/>
-                <b>Percentile</b>&nbsp;:&nbsp;98 %
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Academic Achievements</h4>
-              <p>
-                <ul>
-                  <li>Runners up in Code Storm Competition in March 2019 Won Second Prize.</li>
-                  <li>Won Second Prize in BATTEL OF BRAINS in October 2019.</li>  
-                  <li>Won Second Prize in C-NISTER EVENT in October 2018.</li>
-                  <li>Won First Proze in Realay Coding in February 2020.</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Other Activities</h4>
-              <p>
-                <ul>
-                  <li>I participated in Rajkot Marathon in 2019 and 2020.</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Strengths</h4>
-              <p>
-                <ul>
-                  <li>Creativity</li>
-                  <li>Focused</li>
-                  <li>Taking Initiative</li>
-                  <li>Multitasking</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Weaknesses</h4>
-              <p>
-                <ul>
-                  <li>Insecure</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Hobbies</h4>
-              <p>
-                <ul>
-                  <li>I love learning new technologies</li>
-                  <li>Problem-solving, Competitive programming</li>
-                  <li>Analyzing, and Designing new applications</li>
-                  <li>Music listening</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>TCS Campus Ambassador</h4>
-              <h5>Jun 2020 - Sep 2020</h5>
-              <p>
-                <ul>
-                  <li style="text-align: justify;">Motivated and guided my classmates on how to participate in CodeVita coding competition, what are its benefits, and how to prepare for the competition to get a job letter from TCS.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Software Engineer</h4>
-              <h5>Jun 2023 - Present</h5>
-              <p><em>Thinkbridge Software Pvt Ltd</em></p>
-              <p>
-                <ul>
-                  <li style="text-align: justify;">Automated candidate application email parsing, resulting in a 90% reduction in manual efforts for the recruiter team.</li>
-                  <li style="text-align: justify;">Designed and implemented a streamlined Single Sign‑On (SSO) Authentication and Authorization mechanism in the Compass to enhance user experience and security.</li>
-                  <li style="text-align: justify;">Optimized third‑party integration of Modern Hire, Daxtra Search, and Lgorithm in the Compass application, to enhance overall functionality and system performance.</li>
-                  <li style="text-align: justify;">Enhanced application performance by 45% through comprehensive code optimization and database operation improvements.</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Junior Software Engineer</h4>
-              <h5>Aug 2021 - Jun 2023</h5>
-              <p><em>Tark Technologies LLP, Rajkot</em></p>
-              <p>
-                <ul>
-                  <li style="text-align: justify;">Implemented front-end components and back-end APIs using Angular and ASP.Net Core for building and managing functionality in medical-based projects.</li>
-                  <li style="text-align: justify;">Designed and implemented database migration from MSSQL to MySQL using skeema.io and flywaydb.</li>
-                  <li style="text-align: justify;">Analyzed the application response time using miniprofiler and improved response time by 40%.</li>
-                  <li style="text-align: justify;">Implemented distributed banking system APIs using Onion Architecture.</li>
-                  <li style="text-align: justify;">AAchieved a 30% improvement in query response time by analyzing and optimizing database queries and functions for large datasets.</li>
-                  <li style="text-align: justify;">Upgraded Angular from version 8 to 15 and migrated .NET libraries from version 4.7 to 6 in service‑based projects.</li>
-                  <li style="text-align: justify;">Redesigned Distributed Caching mechanism using Castle Core.</li>
-                </ul>
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Software Intern</h4>
-              <h5>Feb 2021 - Aug 2021</h5>
-              <p><em>Tark Technologies LLP, Rajkot</em></p>
-              <p>
-                <ul>
-                  <li style="text-align: justify;">I learned and practiced new technologies like C#, ADO.NET, MySQL, SQL, Entity Framework, Authentication and Authorization, ASP.NET Core Web API, and Unit testing.</li>
-                  <li style="text-align: justify;">Designed and explored different architectures like Layered architecture and Onion architecture repository patterns.</li>  
-                </ul>
-              </p>
-            </div>
-            <br/>
-            <div class="resume-item">
-              <h4>TECHNICAL STRENGTHS</h4>
-              <p>
-                <ul>
-                  <li>C# </li>
-                  <li>ASP.Net Core MVC, ASP.Net Core Web API</li>
-                  <li>Entity Framework Core, ADO.NET, Dapper</li>
-                  <li>X-Unit, N-Unit and MS Unit testing</li>
-                  <li>HTML, CSS</li> 
-                  <li>JavaScript, TypeScript, Angular</li>
-                  <li>SQL, MySQL</li>
-                  <li>Layered, and Onion Architecture</li>
-                  <li>Microsoft Azure</li>
-                </ul>
-              </p>
-            </div>
-          </div>
+        <div id="socials-container">
+          <a href="https://www.linkedin.com/in/ravikumar-makwana" target="_blank">
+            <img
+              src="./assets/linkedin.png"
+              class="icon"
+            />
+          </a>
+          <a href="https://github.com/ravikumarmakwana" target="_blank">
+            <img
+            src="./assets/github.png"
+            class="icon"
+          />
+          </a>
+          <a href="https://leetcode.com/u/RavikumarMakwana" target="_blank">
+            <img
+            src="./assets/leetcode.png"
+            class="icon"
+          />
+          </a>
+          <a href="https://www.hackerrank.com/profile/Ravi_makwana" target="_blank">
+            <img
+            src="./assets/hackerrank.png"
+            class="icon"
+            />
+          </a>
+          <a href="mailto:ravikumar.makwana.18@gmail.com">
+            <img
+            src="./assets/gmail.png"
+            class="icon"
+          />
+          </a>
+          <a href="tel:6354508988" target="_blank">
+            <img
+            src="./assets/phone.png"
+            class="icon"
+          />
+          </a>
         </div>
       </div>
-    </section><!-- End Resume Section -->
-
-    <section id="services" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Projects</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-bank2"></i></div>
-            <h4 class="title"><a>Tark Bank</a></h4>
-            <p class="description" align="justify">
-              Tark Bank is a distributed system, that simulates various banking operations like deposit, withdraw, interest calculation, mini statements, payment services, card management, and customer services.<br/>
-              <b>Technologies</b>: - C#, ASP.NET Core Web API, MySQL, xUnit Testing.<br/>
-              <b>Software Architecture</b>: - Onion Architecture.
-            </p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-server"></i></div>
-            <h4 class="title"><a>Infrastructure Management</a></h4>
-            <p class="description" align="justify">
-              Created an Infrastructure management system to observe the application server status.<br/>
-              <b>Technologies</b>: - C#, ASP.NET Core Web API, MSSQL, Hangfire, MS Test, Angular.<br/>
-              <b>Software Architecture</b>: - Layered Architecture.
-            </p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-house-fill"></i></div>
-            <h4 class="title"><a  href="https://salutemcare.herokuapp.com/" target="_blank">Salutem Care - Healthcare Solution</a></h4>
-            <p class="description" align="justify">Encouragement to live a healthy lifestyle, easier communication, appointment scheduling, counseling, and improved patient monitoring by storing historical data.</p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-code"></i></div>
-            <h4 class="title"><a>My City - Smart City Android Application</a></h4>
-            <p class="description" align="justify">This Smart City Application, Which cover the Every thing about city. It is android based application to provide information about entire City.</p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-calendar-event-fill"></i></div>
-            <h4 class="title"><a href="https://startjourney.herokuapp.com" target="_blank">Start Journey - Smart Traveler Web Application</a></h4>
-            <p class="description" align="justify">This Smart Traveler web Application, Which cover the Every thing about tourist places in city. Chatbot using Dialogflow</p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-book-half"></i></div>
-            <h4 class="title"><a  href="https://lms-ravi.herokuapp.com" target="_blank">Knowledge Center - Library Management System Web Application</a></h4>
-            <p class="description" align="justify">Knowledge Center is Smart Library Management System Based on Hibernate, Spring Framework, JDBC API and Spring Boot</p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-shop"></i></div>
-            <h4 class="title"><a  href="https://ecommerce-ravi.herokuapp.com" target="_blank">Shopping Home - Smart E-Commerce Web Application</a></h4>
-            <p class="description" align="justify">Shopping Home is PHP based Web Application. It is Smart E-Commerce Web Application.</p>
-          </div>
-          <div class="col-lg-12 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-book-fill"></i></div>
-            <h4 class="title"><a  href="https://virtual-book.herokuapp.com" target="_blank">Virtual Book</a></h4>
-            <p class="description" align="justify">Virtual Book is a Smart Academic Material Web Application that provides functions like online class-notes, lab-assignments, class-ppt, pdf, MCQ practics, etc.</p>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="text-container">
+              <p style="text-align: justify;">I'm a quick learner and self-motivated individual, with over 2.9 years of professional experience as a Software Engineer. Specializing in C# programming and structured, test-driven software development, I thrive on solving complex problems and delivering high-quality solutions to meet the needs of our customers.</p>
+              <br>
+              <p style="text-align: justify;">I'm most comfortable with C#, .NET Core, and relational databases like MySQL and MSSQL, but I'm also flexible and eager to work with new technologies and programming languages.</p>
+              <br>
+              <p style="text-align: justify;"><b>Technical Skills: -</b></p><br>
+              <p style="text-align: justify;"><b>Programming Language:</b> C#</p>
+              <p style="text-align: justify;"><b>Backend:</b> ASP.NET Core Web API, MVC, EF Core, Dapper, MS Testing, xUnit Testing, NUnit Testing</p>
+              <p style="text-align: justify;"><b>Frontend:</b> HTML, CSS, JavaScript, TypeScript, Angular</p>
+              <p style="text-align: justify;"><b>Databases:</b> MSSQL, MySQL</p>
+              <p style="text-align: justify;"><b>Cloud Computing:</b> Microsoft Azure</p>
+              <br>
+              <p style="text-align: justify;">My highest qualification is a Bachelor of Computer Engineering, completed in 2021 from V.V.P. Engineering College.</p>
+              <br>
+              <p style="text-align: justify;">I thrive in collaborative environments and enjoy working closely with fellow engineers and stakeholders to deliver solutions that exceed expectations. Whether it's optimizing performance, architecting robust systems, or tackling challenging problems, I'm always up for the task.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <div style="text-align: left">
+              <h2>Software Engineer</h2>
+              <p style="display: flex;"><em>Thinkbridge Software Pvt Ltd</em> <h5>Jun 2023 - Present</h5></p>
+              <br>
+            </div>
+            <ul>
+              <li style="text-align: justify;">Automated candidate application email parsing, resulting in a 90% reduction in manual efforts for the recruiter team.</li>
+              <li style="text-align: justify;">Designed and implemented a streamlined Single Sign‑On (SSO) Authentication and Authorization mechanism in the Compass to enhance user experience and security.</li>
+              <li style="text-align: justify;">Optimized third‑party integration of Modern Hire, Daxtra Search, and Lgorithm in the Compass application, to enhance overall functionality and system performance.</li>
+              <li style="text-align: justify;">Enhanced application performance by 45% through comprehensive code optimization and database operation improvements.</li>
+            </ul>
+          </div>
+          <div class="details-container">
+            <div style="text-align: left">
+              <h2>Junior Software Engineer</h2>
+              <p style="display: flex;"><em>Tark Technologies</em> <h5>Aug 2021 - Jun 2023</h5></p>
+              <br>
+            </div>
+            <ul>
+              <li style="text-align: justify;">Implemented front-end components and back-end APIs using Angular and ASP.Net Core for building and managing functionality in medical-based projects.</li>
+              <li style="text-align: justify;">Designed and implemented database migration from MSSQL to MySQL using skeema.io and flywaydb.</li>
+              <li style="text-align: justify;">Analyzed the application response time using miniprofiler and improved response time by 40%.</li>
+              <li style="text-align: justify;">Implemented distributed banking system APIs using Onion Architecture.</li>
+              <li style="text-align: justify;">Achieved a 30% improvement in query response time by analyzing and optimizing database queries and functions for large datasets.</li>
+              <li style="text-align: justify;">Upgraded Angular from version 8 to 15 and migrated .NET libraries from version 4.7 to 6 in service‑based projects.</li>
+              <li style="text-align: justify;">Redesigned Distributed Caching mechanism using Castle Core.</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-12 d-flex align-items-stretch">
-            <div class="info">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <i class="bi bi-envelope-fill"></i>
-                  <h4>Email:</h4>
-                  <a href="mailto:ravikumar.makwana.18@gmail.com">
-                    <p>ravikumar.makwana.18@gmail.com</p>
-                  </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <i class="bi bi-phone-fill"></i>
-                  <h4>Phone Number:</h4>
-                  <a href="tel:6354508988">
-                    <p>63545 08988</p>
-                  </a>
-                </div>
-              </div>              
+      </div>
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers" style="display: flex;">
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">Collaborative Whiteboard App</h2>
+            <div class="article-container">
+              <p>
+                Collaborative whiteboard app allowing real-time drawing using HTML/CSS/JS, Bootstrap for styling, and Socket.IO for live user communication.
+              </p>
+              <ul>
+                <li style="text-align: justify;">
+                  Real-Time Collaboration: Multiple users can draw together on the same whiteboard simultaneously.
+                </li>
+                <li style="text-align: justify;">
+                  Customizable Drawing Tools: Users can choose different colors and brush sizes for their drawings.
+                </li>
+                <li style="text-align: justify;">
+                  Eraser Mode: Includes an eraser mode for removing specific parts of the drawing.
+                </li>
+                <li style="text-align: justify;">
+                  Room-based Interaction: Users can create new whiteboards or join existing ones using unique room IDs.
+                </li>
+              </ul>
+            </div>
+            <br>
+            <div class="btn-container">
+              <a
+                class="btn btn-color-2 project-btn"
+                target="_blank"
+                href="https://github.com/ravikumarmakwana/Collaborative-Draw">
+                Github
+            </a>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">QuickBank API</h2>
+            <div class="article-container">
+              <ul>
+                <li style="text-align: justify;">
+                  Designed and implemented a robust ASP.NET Core 8 Web API for QuickBank, incorporating Layered Architecture for Scalability and Maintainability.
+                </li>
+                <li style="text-align: justify;">
+                  Designed and implemented Azure Functions to automate essential banking operations, including quarterly interest calculations, account status updates, and fixed deposit management.
+                </li>
+                <li style="text-align: justify;">
+                  Implemented a comprehensive set of CRUD functionalities to simulate essential banking operations, including customer management, account operations, transaction handling, and fixed deposit management.
+                </li>
+              </ul>
+            </div>
+            <br>
+            <div class="btn-container">
+              <a
+                class="btn btn-color-2 project-btn"
+                target="_blank"
+                href="https://github.com/ravikumarmakwana/QuickBank">
+                Github
+            </a>
             </div>
           </div>
         </div>
       </div>
-    </section><!-- End Contact Section -->
-  </main><!-- End #main -->
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright are <strong><span>Reserved</span></strong>
+    </section>
+    <section id="education">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Education</h1>
+      <div class="experience-details-container">
+        <div class="about-containers" style="display: flex;">
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">Bachelor of Computer Engineering</h2>
+            <p>Gujarat Technological University (V.V.P. Engineering College, Rajkot)</p>
+            <h5>Jul 2017 - Jul 2021</h5>
+            <p><b>CGPA: 9.80 / 10.0</b></p>
+          </div>
+        </div>
       </div>
-      <div class="credits">
-        by <a href="#">Ravikumar Makwana</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>
