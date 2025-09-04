@@ -257,6 +257,58 @@
     </div>
   </section>
 
+  <section id="blog">
+    <div class="container">
+      <h2 class="section-title">Latest from My Blog</h2>
+      <div id="medium-posts" class="row g-4"></div>
+
+      <!-- Read More button -->
+      <div class="text-center mt-4">
+        <a id="read-more-btn" href="#" target="_blank" 
+           class="btn btn-custom px-4 py-2">
+           Read More →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medium Blog Script -->
+  <script>
+    async function loadMediumPosts(username, count = 3) {
+      const feedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
+      const response = await fetch(feedUrl);
+      const data = await response.json();
+
+      const posts = data.items.slice(0, count);
+      const container = document.getElementById("medium-posts");
+
+      posts.forEach(post => {
+        const col = document.createElement("div");
+        col.className = "col-md-4";
+
+        col.innerHTML = `
+          <div class="card h-100 shadow-sm border-0" style="border-left:4px solid #f72585;">
+            <a href="${post.link}" target="_blank" style="text-decoration:none; color:inherit;">
+              <div class="card-body">
+                <h5 class="card-title fw-bold" style="color:black;">${post.title}</h5>
+                <p class="card-text" style="font-size:0.9rem; color:#555;">
+                  ${post.description.replace(/<[^>]+>/g, '').slice(0, 100)}...
+                </p>
+                <span class="text-primary fw-semibold">Read more →</span>
+              </div>
+            </a>
+          </div>
+        `;
+
+        container.appendChild(col);
+      });
+
+      document.getElementById("read-more-btn").href = `https://medium.com/@${username}`;
+    }
+
+    loadMediumPosts("ravikumar.makwana", 6);
+  </script>
+
   <!-- FOOTER -->
   <footer>
     Made with <span style="color: #ff4d9e; font-size: 1.2rem;">&#10084;&#65039;</span> by Ravikumar Makwana
