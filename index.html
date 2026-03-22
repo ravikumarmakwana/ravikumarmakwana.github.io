@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -40,7 +40,9 @@
         color: white;
         border: none;
         margin-top: 10px;
-        transition: transform 0.2s ease, background-color 0.3s;
+        transition:
+          transform 0.2s ease,
+          background-color 0.3s;
       }
 
       .btn-custom:hover {
@@ -239,10 +241,9 @@
           <h6>Nov 2025 - Present</h6>
           <ul>
             <li style="text-align: justify">
-              Joined the Front Desk Operations team at Zenoti, contributing to a
-              global SaaS platform used by thousands of salons, spas, and
-              med-spas to manage appointments, billing, and guest journeys at
-              scale.
+              Enhanced Zenoti’s marketing discount module to enable voucher and
+              campaign usage per invoice, enforcing rule-based validation to
+              prevent conflicts and streamline checkout for 30K+ customers.
             </li>
           </ul>
         </div>
@@ -541,9 +542,8 @@
           container.appendChild(col);
         });
 
-        document.getElementById(
-          "read-more-btn"
-        ).href = `https://medium.com/@${username}`;
+        document.getElementById("read-more-btn").href =
+          `https://medium.com/@${username}`;
       }
 
       loadMediumPosts("ravikumar.makwana", 6);
