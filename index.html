@@ -3,202 +3,1281 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ravikumar Makwana</title>
+    <meta
+      name="description"
+      content="Ravikumar Makwana - Senior Software Engineer specializing in C#, ASP.NET Core, Azure, Angular, scalable systems, and high-performance integrations."
+    />
+    <title>Ravikumar Makwana | Senior Software Engineer</title>
 
-    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Animate on Scroll -->
     <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       rel="stylesheet"
     />
 
     <style>
-      body {
-        font-family: "Segoe UI", sans-serif;
-        background: #f9fafe;
+      :root {
+        --ink: #172033;
+        --muted: #647084;
+        --soft: #f7f4ef;
+        --paper: #fffdfa;
+        --card: rgba(255, 255, 255, 0.78);
+        --line: rgba(23, 32, 51, 0.1);
+        --accent: #3b82f6;
+        --accent-2: #14b8a6;
+        --warm: #f59e0b;
+        --shadow: 0 18px 54px rgba(23, 32, 51, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
         scroll-behavior: smooth;
       }
 
-      header {
-        background: linear-gradient(135deg, #3a0ca3, #f72585);
-        color: white;
-        text-align: center;
-        padding: 60px 20px;
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: "Inter", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(
+            circle at 18% 6%,
+            rgba(59, 130, 246, 0.12),
+            transparent 28rem
+          ),
+          radial-gradient(
+            circle at 88% 12%,
+            rgba(20, 184, 166, 0.12),
+            transparent 24rem
+          ),
+          linear-gradient(180deg, var(--soft), #f9fbff 48%, var(--paper));
+        overflow-x: hidden;
       }
 
-      .btn-custom {
-        background-color: #f72585;
-        color: white;
-        border: none;
-        margin-top: 10px;
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background-image: linear-gradient(
+          rgba(23, 32, 51, 0.035) 1px,
+          transparent 1px
+        );
+        background-size: 100% 44px;
+        mask-image: linear-gradient(180deg, #000, transparent 68%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+        transition:
+          opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .hero {
+        min-height: 88vh;
+        padding: clamp(28px, 5vw, 54px) 0 64px;
+        display: grid;
+        align-items: center;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: clamp(28px, 5vw, 64px);
+        align-items: start;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      }
+
+      .search-page {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .search-bar {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        min-height: 58px;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.7rem 0.85rem;
+        color: #2e3a4f;
+        border: 1px solid rgba(23, 32, 51, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 50px rgba(23, 32, 51, 0.09);
+        backdrop-filter: blur(18px);
+      }
+
+      .search-bar i {
+        color: var(--accent);
+      }
+
+      .query {
+        flex: 1;
+        min-width: 0;
+        font-size: clamp(1rem, 2.2vw, 1.15rem);
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .search-key {
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 800;
+        border-radius: 999px;
+        background: var(--accent);
+        font-size: 0.78rem;
+      }
+
+      .search-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.35rem;
+        align-items: center;
+        padding-left: 0.4rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .search-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .search-tabs a {
+        position: relative;
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.72rem;
+        color: #657184;
+        font-size: 0.92rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 999px;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .search-tabs a:hover,
+      .search-tabs a.active {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .search-tabs a.active::after {
+        position: absolute;
+        right: 0.7rem;
+        bottom: -2px;
+        left: 0.7rem;
+        height: 3px;
+        content: "";
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .result-card {
+        width: 100%;
+        max-width: 100%;
+        padding: clamp(1.2rem, 3vw, 1.8rem);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .result-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-bottom: 0.8rem;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .result-label span {
+        color: #245c55;
+      }
+
+      .result-card h1 {
+        max-width: 720px;
+        margin: 0 0 0.8rem;
+        font-size: clamp(2rem, 3.45vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      .result-card h1 span {
+        color: var(--accent);
+      }
+
+      .result-url {
+        margin-bottom: 0.9rem;
+        color: #245c55;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .result-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 1rem;
+      }
+
+      .result-facts span {
+        padding: 0.46rem 0.65rem;
+        color: #2e3a4f;
+        font-size: 0.84rem;
+        font-weight: 700;
+        border: 1px solid rgba(23, 32, 51, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        width: fit-content;
+        padding: 0.5rem 0.78rem;
+        color: #245c55;
+        font-size: 0.84rem;
+        font-weight: 700;
+        border: 1px solid rgba(20, 184, 166, 0.2);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.66);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent-2);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero h1 {
+        max-width: 780px;
+        margin: 1.25rem 0 1.15rem;
+        font-size: clamp(2.7rem, 6vw, 5.9rem);
+        font-weight: 800;
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .hero h1 span {
+        color: var(--accent);
+      }
+
+      .hero-copy {
+        max-width: 690px;
+        color: #43516a;
+        font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+        line-height: 1.78;
+      }
+
+      .actions,
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .actions {
+        margin-top: 1.7rem;
+      }
+
+      .socials {
+        margin-top: 1.1rem;
+      }
+
+      .btn,
+      .social-link,
+      .repo-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 999px;
         transition:
           transform 0.2s ease,
-          background-color 0.3s;
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          color 0.2s ease;
       }
 
-      .btn-custom:hover {
-        background-color: #ff4d9e;
-        transform: scale(1.05);
+      .btn {
+        min-height: 46px;
+        padding: 0.78rem 1rem;
+      }
+
+      .btn.primary {
+        color: #fff;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        box-shadow: 0 16px 34px rgba(59, 130, 246, 0.22);
+      }
+
+      .btn.secondary,
+      .social-link {
+        color: #2e3a4f;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .social-link {
+        min-height: 38px;
+        padding: 0.52rem 0.72rem;
+        font-size: 0.9rem;
+      }
+
+      .btn:hover,
+      .social-link:hover,
+      .repo-link:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn.secondary:hover,
+      .social-link:hover {
+        color: var(--accent);
+        border-color: rgba(59, 130, 246, 0.35);
+      }
+
+      .portrait {
+        position: relative;
+        padding: 0.7rem;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        align-self: start;
+      }
+
+      .portrait::after {
+        position: absolute;
+        right: -16px;
+        bottom: 30px;
+        width: 76px;
+        height: 76px;
+        content: "";
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        opacity: 0.86;
+        z-index: -1;
+      }
+
+      .portrait img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: 22px;
+      }
+
+      .knowledge-body {
+        padding: 1rem 0.25rem 0.25rem;
+      }
+
+      .knowledge-body h2 {
+        margin-bottom: 0.15rem;
+        font-size: 1.28rem;
+      }
+
+      .knowledge-body p {
+        margin-bottom: 0.9rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .knowledge-links {
+        display: grid;
+        gap: 0.62rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .knowledge-links a {
+        display: inline-flex;
+        min-height: 58px;
+        align-items: center;
+        gap: 0.58rem;
+        padding: 0.78rem;
+        color: var(--ink);
+        font-weight: 800;
+        text-decoration: none;
+        border: 1px solid rgba(23, 32, 51, 0.08);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.64);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .knowledge-links a:hover {
+        color: var(--accent);
+        border-color: rgba(59, 130, 246, 0.28);
+        box-shadow: 0 14px 34px rgba(23, 32, 51, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .knowledge-links i {
+        color: var(--accent);
+        font-size: 1.08rem;
       }
 
       section {
-        padding: 40px 20px;
+        padding: clamp(58px, 8vw, 96px) 0;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 0.8rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .kicker {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
       }
 
       .section-title {
-        color: #3a0ca3;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 40px;
+        max-width: 720px;
+        margin-bottom: 0;
+        font-size: clamp(2rem, 4.3vw, 3.55rem);
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: 0;
       }
 
-      .about-img {
-        width: 100%;
-        max-width: 350px;
-        border-radius: 15px 120px;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-        box-shadow: 15px 15px 10px #f72585;
+      .section-lead {
+        max-width: 700px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.76;
       }
 
-      .info-links {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .info-links a {
-        text-decoration: none;
-        color: white;
-        font-size: 0.95rem;
-        transition: color 0.2s;
-      }
-
-      .info-links a:hover {
-        text-decoration: underline;
-        color: #ffd6e8;
-      }
-
-      .experience-box,
-      .education-box {
-        background: #fff;
-        border-left: 4px solid #3a0ca3;
-        padding: 20px;
-        margin-bottom: 25px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      }
-
+      .panel,
+      .timeline-card,
       .project-card,
-      .skill-box {
-        background: white;
-        border-left: 4px solid #f72585;
-        border-radius: 10px;
-        padding: 25px;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      .education-card,
+      .blog-card {
+        border: 1px solid var(--line);
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .about-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .panel {
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border-radius: 24px;
+      }
+
+      .panel p {
+        color: #43516a;
+        line-height: 1.76;
+      }
+
+      .mini-grid {
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mini {
+        padding: 1rem;
+        border: 1px solid rgba(23, 32, 51, 0.08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      .mini i {
+        color: var(--accent);
+        margin-bottom: 0.7rem;
+      }
+
+      .mini strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
+      .mini p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .skill-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.62rem;
+      }
+
+      .skill-cloud span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.48rem;
+        padding: 0.52rem 0.72rem;
+        color: #2e3a4f;
+        font-size: 0.88rem;
+        font-weight: 700;
+        border: 1px solid rgba(23, 32, 51, 0.09);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .skill-cloud i {
+        color: var(--accent);
+        font-size: 0.95rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .timeline-card {
+        position: relative;
+        padding: 1.25rem 1.25rem 1.25rem 1.45rem;
+        border-radius: 22px;
+        overflow: hidden;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .timeline-card::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        content: "";
+        background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      }
+
+      .timeline-card:hover,
+      .project-card:hover,
+      .blog-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 60px rgba(23, 32, 51, 0.11);
+      }
+
+      .timeline-card h3,
+      .project-card h3,
+      .education-card h3,
+      .blog-card h3 {
+        margin-bottom: 0.35rem;
+        font-size: 1.08rem;
+        font-weight: 800;
+      }
+
+      .date {
+        display: inline-flex;
+        margin-bottom: 0.7rem;
+        color: var(--accent);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      .timeline-card li {
+        margin-bottom: 0.45rem;
+        color: #4d5b70;
+        line-height: 1.62;
+      }
+
+      .project-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-card {
+        display: flex;
+        min-height: 245px;
+        padding: 1.2rem;
+        flex-direction: column;
+        border-radius: 22px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .project-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 0.9rem;
+        place-items: center;
+        color: var(--accent);
+        border: 1px solid rgba(59, 130, 246, 0.16);
+        border-radius: 14px;
+        background: rgba(59, 130, 246, 0.08);
+      }
+
+      .project-card p,
+      .project-card li,
+      .blog-card p {
+        color: var(--muted);
+        line-height: 1.62;
+      }
+
+      .project-card ul {
+        padding-left: 1.15rem;
+      }
+
+      .project-card li {
+        margin-bottom: 0.45rem;
+      }
+
+      .blog-card h3,
+      .blog-card p {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+      }
+
+      .blog-card h3 {
+        margin-bottom: 0.7rem;
+        -webkit-line-clamp: 3;
+      }
+
+      .blog-card p {
+        -webkit-line-clamp: 3;
+      }
+
+      .repo-link {
+        width: fit-content;
+        margin-top: auto;
+        color: var(--accent);
+      }
+
+      .education-card {
+        display: grid;
+        gap: 1rem;
+        align-items: center;
+        padding: 1.25rem;
+        border-radius: 22px;
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .education-icon {
+        display: grid;
+        width: 54px;
+        height: 54px;
+        place-items: center;
+        color: var(--accent);
+        border: 1px solid rgba(59, 130, 246, 0.16);
+        border-radius: 16px;
+        background: rgba(59, 130, 246, 0.08);
+      }
+
+      .score {
+        padding: 0.62rem 0.78rem;
+        color: #245c55;
+        font-weight: 800;
+        border-radius: 999px;
+        background: rgba(20, 184, 166, 0.12);
+      }
+
+      .blog-section {
+        overflow: hidden;
+      }
+
+      .blog-head {
+        display: flex;
+        gap: 1rem;
+        align-items: end;
+        justify-content: space-between;
+      }
+
+      .medium-link {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.72rem 0.92rem;
+        color: var(--accent);
+        font-weight: 800;
+        text-decoration: none;
+        border: 1px solid rgba(59, 130, 246, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .medium-link:hover {
+        transform: translateY(-2px);
+        border-color: rgba(59, 130, 246, 0.36);
+        box-shadow: 0 16px 38px rgba(59, 130, 246, 0.12);
+      }
+
+      .blog-marquee {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 8%,
+          #000 92%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 8%,
+          #000 92%,
+          transparent
+        );
+      }
+
+      .blog-track {
+        display: flex;
+        width: max-content;
+        gap: 0.8rem;
+        animation: marquee var(--marquee-duration, 105s) linear infinite;
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+      }
+
+      .blog-marquee:hover .blog-track {
+        animation-play-state: paused;
+      }
+
+      .blog-card {
+        position: relative;
+        display: flex;
+        width: min(360px, 84vw);
+        min-height: 246px;
+        padding: 1.18rem;
+        flex: 0 0 auto;
+        flex-direction: column;
+        border-radius: 22px;
+        text-decoration: none;
+        overflow: hidden;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .blog-card::before {
+        position: absolute;
+        inset: 0 0 auto;
+        height: 4px;
+        content: "";
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        opacity: 0.82;
+      }
+
+      .blog-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.42rem;
+        align-items: center;
+        margin-bottom: 0.65rem;
+        color: #6a7588;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .blog-date {
+        width: fit-content;
+        padding: 0.34rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(245, 158, 11, 0.12);
+      }
+
+      .blog-source {
+        color: #7a5300;
+      }
+
+      .read {
+        display: inline-flex;
+        width: fit-content;
+        margin-top: auto;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .read i {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.1);
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .blog-card:hover .read i {
+        transform: translateX(2px);
+        background: rgba(59, 130, 246, 0.16);
       }
 
       footer {
-        background: #3a0ca3;
-        color: white;
+        padding: 28px 0;
+        color: #667085;
         text-align: center;
-        padding: 20px;
+      }
+
+      .heart {
+        color: #ef4444;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(-50%, 0, 0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 28px;
+        }
+
+        .portrait {
+          width: min(100%, 420px);
+          max-width: 340px;
+          margin: 0 auto;
+          order: -1;
+        }
+
+        .portrait::after {
+          right: -8px;
+          bottom: 18px;
+        }
+
+        .search-page {
+          gap: 0.9rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 28px, 1180px);
+        }
+
+        body::before {
+          background-size: 100% 36px;
+        }
+
+        .hero {
+          padding: 20px 0 46px;
+        }
+
+        section {
+          padding: 52px 0;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.2rem, 12vw, 3.6rem);
+        }
+
+        .result-card h1 {
+          font-size: clamp(1.8rem, 8.4vw, 2.45rem);
+        }
+
+        .search-bar {
+          border-radius: 22px;
+          min-height: 54px;
+          gap: 0.58rem;
+          padding: 0.62rem 0.66rem;
+        }
+
+        .query {
+          font-size: 0.98rem;
+        }
+
+        .search-key {
+          width: 32px;
+          height: 32px;
+          flex-basis: 32px;
+        }
+
+        .search-tabs {
+          margin: 0 -14px;
+          padding: 0 14px 0.35rem;
+          scroll-padding-inline: 14px;
+        }
+
+        .search-tabs a {
+          flex: 0 0 auto;
+          min-height: 36px;
+          padding: 0.42rem 0.66rem;
+          font-size: 0.86rem;
+        }
+
+        .result-card,
+        .panel,
+        .timeline-card,
+        .project-card,
+        .education-card,
+        .blog-card {
+          border-radius: 20px;
+        }
+
+        .result-card {
+          padding: 1rem;
+        }
+
+        .hero-copy,
+        .section-lead {
+          font-size: 0.96rem;
+          line-height: 1.68;
+        }
+
+        .actions,
+        .socials {
+          gap: 0.58rem;
+        }
+
+        .btn {
+          min-height: 42px;
+          padding: 0.68rem 0.82rem;
+          font-size: 0.92rem;
+        }
+
+        .social-link {
+          min-height: 36px;
+          padding: 0.48rem 0.62rem;
+          font-size: 0.84rem;
+        }
+
+        .result-facts,
+        .skill-cloud {
+          gap: 0.46rem;
+        }
+
+        .result-facts span,
+        .skill-cloud span {
+          padding: 0.44rem 0.58rem;
+          font-size: 0.8rem;
+        }
+
+        .portrait {
+          max-width: 300px;
+          padding: 0.55rem;
+          border-radius: 22px;
+        }
+
+        .portrait img {
+          border-radius: 17px;
+        }
+
+        .knowledge-body {
+          padding-top: 0.85rem;
+        }
+
+        .knowledge-links {
+          gap: 0.45rem;
+        }
+
+        .knowledge-links a {
+          min-height: 50px;
+          padding: 0.62rem;
+          border-radius: 14px;
+        }
+
+        .mini-grid,
+        .education-card {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          font-size: clamp(1.85rem, 8vw, 2.65rem);
+        }
+
+        .timeline-card,
+        .project-card {
+          padding: 1rem;
+        }
+
+        .education-card {
+          align-items: start;
+        }
+
+        .score {
+          width: fit-content;
+        }
+
+        .blog-head {
+          display: grid;
+          align-items: start;
+        }
+
+        .blog-marquee {
+          -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 4%,
+            #000 96%,
+            transparent
+          );
+          mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 4%,
+            #000 96%,
+            transparent
+          );
+        }
+
+        .blog-card {
+          width: min(300px, 82vw);
+          min-height: 230px;
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .shell {
+          width: min(100% - 20px, 1180px);
+        }
+
+        .result-card h1 {
+          font-size: 1.7rem;
+        }
+
+        .query {
+          font-size: 0.9rem;
+        }
+
+        .search-key {
+          display: none;
+        }
+
+        .btn,
+        .social-link {
+          width: 100%;
+        }
       }
     </style>
   </head>
-  <body>
-    <!-- HEADER -->
-    <header>
-      <h1 class="fw-bold">Hello, I'm Ravikumar Makwana</h1>
-      <p class="mb-3">
-        Senior Software Engineer • C# • ASP.NET Core • Microsoft Azure • Angular
-        • Scalable System Design
-      </p>
-      <a
-        href="./assets/Ravikumar Makwana.pdf"
-        target="_blank"
-        class="btn btn-sm btn-custom"
-        >Download CV</a
-      >
-      <div class="info-links mt-4">
-        <a
-          href="https://www.linkedin.com/in/ravikumar-makwana"
-          target="_blank"
-          style="color: white; font-size: large"
-          ><i class="fab fa-linkedin"></i> LinkedIn</a
-        >
-        &nbsp;
-        <a
-          href="https://github.com/ravikumarmakwana"
-          target="_blank"
-          style="color: white; font-size: large"
-          ><i class="fab fa-github"></i> GitHub</a
-        >
-        &nbsp;
-        <a
-          href="mailto:ravikumar.makwana.18@gmail.com"
-          style="color: white; font-size: large"
-          ><i class="fas fa-envelope"></i> Email</a
-        >
-        &nbsp;
-        <a href="tel:+916354508988" style="color: white; font-size: large"
-          ><i class="fas fa-phone"></i> Mobile</a
-        >
-        &nbsp;
-        <a
-          href="https://leetcode.com/u/RavikumarMakwana"
-          target="_blank"
-          style="color: white; font-size: large"
-          ><i class="fas fa-code"></i> LeetCode</a
-        >
-        &nbsp;
-        <a
-          href="https://medium.com/@ravikumar.makwana"
-          target="_blank"
-          style="color: white; font-size: large"
-          ><i class="fas fa-book"></i> Medium</a
-        >
-      </div>
-    </header>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="row align-items-center">
-          <div class="col-md-4 text-center mb-3">
-            <img
-              src="./assets/profile-pic.jpg"
-              alt="Ravikumar"
-              class="about-img"
-            />
+  <body>
+    <main>
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div class="search-page" data-reveal>
+            <div class="search-bar" aria-label="Search query">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <div class="query">Who is Ravikumar Makwana?</div>
+              <div class="search-key">Go</div>
+            </div>
+
+            <nav class="search-tabs" aria-label="Search result sections">
+              <a class="active" href="#top-result"
+                ><i class="fa-solid fa-circle-info"></i>Overview</a
+              >
+              <a href="#skills"
+                ><i class="fa-solid fa-screwdriver-wrench"></i>Skills</a
+              >
+              <a href="#experience"
+                ><i class="fa-solid fa-briefcase"></i>Experience</a
+              >
+              <a href="#projects"><i class="fa-solid fa-code"></i>Projects</a>
+              <a href="#blog"><i class="fa-solid fa-pen"></i>Writing</a>
+            </nav>
+
+            <div class="result-card" id="top-result">
+              <div class="result-label">
+                <i class="fa-solid fa-circle-check"></i>
+                Best match
+              </div>
+              <h1>
+                Ravikumar Makwana is a <span>Senior Software Engineer</span>.
+              </h1>
+              <p class="hero-copy">
+                A C#, ASP.NET Core, Azure, and Angular engineer who designs
+                clean APIs, reliable integrations, and performance-minded
+                products.
+              </p>
+
+              <div class="result-facts">
+                <span>C#</span>
+                <span>ASP.NET Core</span>
+                <span>Microsoft Azure</span>
+                <span>Angular</span>
+                <span>Scalable System Design</span>
+              </div>
+
+              <div class="actions">
+                <a
+                  href="./assets/Ravikumar Makwana.pdf"
+                  target="_blank"
+                  class="btn primary"
+                >
+                  <i class="fa-solid fa-file-arrow-down"></i>
+                  Download CV
+                </a>
+                <a href="#projects" class="btn secondary">
+                  <i class="fa-solid fa-layer-group"></i>
+                  View Work
+                </a>
+                <a
+                  href="mailto:ravikumar.makwana.18@gmail.com"
+                  class="btn secondary"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  Email
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="col-md-8">
-            <p style="text-align: justify">
+
+          <div class="portrait" data-reveal>
+            <img src="./assets/profile-pic.jpg" alt="Ravikumar Makwana" />
+            <div class="knowledge-body">
+              <h2>Ravikumar Makwana</h2>
+              <p>
+                Senior Software Engineer focused on backend systems, cloud
+                workflows, and clean product delivery.
+              </p>
+              <div class="knowledge-links">
+                <a
+                  href="https://www.linkedin.com/in/ravikumar-makwana"
+                  target="_blank"
+                >
+                  <i class="fa-brands fa-linkedin"></i>
+                  LinkedIn
+                </a>
+                <a href="https://github.com/ravikumarmakwana" target="_blank">
+                  <i class="fa-brands fa-github"></i>
+                  GitHub
+                </a>
+                <a
+                  href="https://leetcode.com/u/RavikumarMakwana"
+                  target="_blank"
+                >
+                  <i class="fa-solid fa-code"></i>
+                  LeetCode
+                </a>
+                <a href="https://medium.com/@ravikumar.makwana" target="_blank">
+                  <i class="fa-brands fa-medium"></i>
+                  Medium
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="shell about-grid">
+          <div data-reveal>
+            <span class="kicker">About Me</span>
+            <h2 class="section-title">
+              Thoughtful engineering, practical delivery.
+            </h2>
+          </div>
+          <div class="panel" data-reveal>
+            <p>
               I'm a quick learner and self-motivated Software Engineer with over
-              4 years of experience. I specialize in C# programming and
+              4.8 years of experience. I specialize in C# programming and
               structured test-driven software development. I solve complex
               problems and deliver high-quality solutions that meet customers'
               needs.
             </p>
-            <p style="text-align: justify">
+            <p>
               I'm most comfortable with C#, .NET Core, and relational databases
               like MySQL and MSSQL, but I'm also flexible and eager to work with
               new technologies and programming languages.
             </p>
-            <p style="text-align: justify">
-              My highest qualification is a Bachelor of Computer Engineering,
-              completed in 2021 from V.V.P. Engineering College.
-            </p>
-            <p style="text-align: justify">
+            <p>
               I thrive in collaborative environments and enjoy working closely
               with fellow engineers and stakeholders to deliver solutions that
               exceed expectations. Whether it's optimizing performance,
@@ -207,360 +1286,485 @@
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skill-box">
-          <p>
-            <strong>Languages:</strong> C#, SQL, JavaScript <br /><strong
-              >Frameworks & Libraries:</strong
+      <section id="skills">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <span class="kicker">Skills</span>
+            <h2 class="section-title">A focused production toolkit.</h2>
+          </div>
+          <div class="skill-cloud" data-reveal>
+            <span><i class="fa-solid fa-code"></i>C#</span>
+            <span><i class="fa-solid fa-database"></i>SQL</span>
+            <span><i class="fa-brands fa-js"></i>JavaScript</span>
+            <span><i class="fa-solid fa-server"></i>ASP.NET Core Web API</span>
+            <span><i class="fa-solid fa-layer-group"></i>Entity Framework</span>
+            <span><i class="fa-solid fa-route"></i>Dapper</span>
+            <span><i class="fa-brands fa-angular"></i>Angular</span>
+            <span><i class="fa-solid fa-filter"></i>LINQ</span>
+            <span><i class="fa-solid fa-cloud"></i>Microsoft Azure</span>
+            <span><i class="fa-solid fa-code-branch"></i>Azure DevOps</span>
+            <span><i class="fa-solid fa-memory"></i>Redis</span>
+            <span><i class="fa-brands fa-git-alt"></i>Git</span>
+            <span><i class="fa-solid fa-database"></i>SQL Server</span>
+            <span><i class="fa-solid fa-database"></i>MySQL</span>
+            <span><i class="fa-solid fa-list-check"></i>Jira</span>
+            <span><i class="fa-solid fa-vial"></i>MsTest</span>
+            <span><i class="fa-solid fa-flask"></i>xUnit</span>
+            <span><i class="fa-solid fa-check-double"></i>NUnit</span>
+            <span
+              ><i class="fa-solid fa-cubes"></i>Microservices Architecture</span
             >
-            ASP.NET Core Web API, Entity Framework, Dapper, Angular, LINQ
-            <br /><strong>Cloud & DevOps:</strong> Microsoft Azure, Azure
-            DevOps, Redis, Git <br /><strong>Databases:</strong> SQL Server,
-            MySQL <br /><strong>Tools & Project Management:</strong> Jira, Git
-            <br /><strong>Unit Testing:</strong> MsTest, xUnit, NUnit
-            <br /><strong>Concepts & Architecture:</strong> Microservices
-            Architecture, SOLID Principles, Design Patterns, Data Structures &
-            Algorithms
-          </p>
+            <span
+              ><i class="fa-solid fa-compass-drafting"></i>SOLID
+              Principles</span
+            >
+            <span><i class="fa-solid fa-shapes"></i>Design Patterns</span>
+            <span
+              ><i class="fa-solid fa-diagram-project"></i>Data Structures &
+              Algorithms</span
+            >
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="experience-box">
-          <h5>Senior Software Engineer - Zenoti</h5>
-          <h6>Nov 2025 - Present</h6>
-          <ul>
-            <li style="text-align: justify">
-              Enhanced Zenoti’s marketing discount module to enable voucher and
-              campaign usage per invoice, enforcing rule-based validation to
-              prevent conflicts and streamline checkout for 30K+ customers.
-            </li>
-          </ul>
-        </div>
-        <div class="experience-box">
-          <h5>Senior Software Engineer - Thinkbridge Software Pvt Ltd</h5>
-          <h6>Jun 2025 - Nov 2025</h6>
-          <ul>
-            <li style="text-align: justify">
-              <b>High-Volume ATS Integration using API Batch Processing:</b> Led
-              the design and development of Bullhorn ATS integration into
-              Compass using public APIs — built from scratch with the Factory
-              Design Pattern and Microservices architecture, enabling seamless
-              hiring and processing over 15,000 candidates daily.
-            </li>
-            <li style="text-align: justify">
-              <b>Automated Candidate Engagement:</b> Simplified a core Compass
-              function at the system level, overcoming Twilio SMS stateless
-              limitations to ensure consistent response mapping and deliver a
-              better user experience.
-            </li>
-          </ul>
-        </div>
-        <div class="experience-box">
-          <h5>Software Engineer - Thinkbridge Software Pvt Ltd</h5>
-          <h6>Jun 2023 - May 2025</h6>
-          <ul>
-            <li style="text-align: justify">
-              <b>ATS Integration System:</b> Implemented scalable integration
-              between ATS platforms (Bullhorn and iCIMS) and Compass using
-              high-performance Webhook APIs, enabling seamless candidate data
-              retrieval, reducing processing time by 60%, and enhancing system
-              reliability.
-            </li>
-            <li style="text-align: justify">
-              <b>Intelligent Email Parsing:</b> Led the design and development
-              of an event-driven email parser that processes 50,000+
-              applications weekly, reducing recruiters’ manual workload by 90%.
-            </li>
-            <li style="text-align: justify">
-              <b>Azure AD SSO Integration:</b> Implemented Single Sign-On (SSO)
-              authentication using Azure AD OAuth2 & OpenID Connect, securing
-              access for 2,000+ daily users.
-            </li>
-            <li style="text-align: justify">
-              <b>High-Performance System Optimization:</b> Optimized third-party
-              integrations (Modern Hire, Daxtra Search, Survale) to handle
-              10,000+ daily transactions with high availability and efficiency.
-              Enhanced application performance by 45% through database query and
-              code optimizations.
-            </li>
-            <li style="text-align: justify">
-              <b>Event-Driven Asynchronous Processing:</b> Architected an Azure
-              Functions-based event-driven system using message queues, reducing
-              system latency by 30%.
-            </li>
-          </ul>
-        </div>
-        <div class="experience-box">
-          <h5>Junior Software Engineer - Tark Technologies</h5>
-          <h6>Aug 2021 - Jun 2023</h6>
-          <ul>
-            <li style="text-align: justify">
-              <b>Real-Time Medical Systems Development:</b> Developed responsive
-              dashboards and reports using ASP.NET Core Web API and Angular,
-              provided healthcare providers with real-time insights to enhance
-              data-driven decision-making.
-            </li>
-            <li style="text-align: justify">
-              <b>Performance Tuning:</b> Identified bottlenecks using
-              MiniProfiler, refined database queries, and accelerated query
-              response times by 30%, leading to a significantly enhanced user
-              experience and improved customer satisfaction.
-            </li>
-            <li style="text-align: justify">
-              <b>Scalability Enhancements:</b> Upgraded Angular (v8 to v15) and
-              .NET libraries (v4.7 to v6). Migrated MSSQL database to MySQL
-              using Skeema.io and FlywayDB, enhancing scalability and reducing
-              costs.
-            </li>
-            <li style="text-align: justify">
-              <b>Cache System:</b> Led the Implementation of a distributed
-              caching mechanism using Castle Core, significantly enhancing
-              system performance under high traffic conditions.
-            </li>
-            <li style="text-align: justify">
-              <b>Mentorship:</b> Supervised and mentored a team of 6 interns,
-              facilitating their professional growth and project contributions.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <section id="experience">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <span class="kicker">Experience</span>
+            <h2 class="section-title">Work with measurable outcomes.</h2>
+          </div>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-card">
-          <h5>URL Shortener - Scalable & Secure Link Management</h5>
-          <ul>
-            <li style="text-align: justify">
-              Engineered a high-performance URL Shortener using ASP.NET Core and
-              Angular, leveraging microservices architecture for modularity,
-              scalability, and fault tolerance.
-            </li>
-            <li style="text-align: justify">
-              Implemented optimized Base62 encoding, enabling 900M+ unique short
-              URLs, ensuring minimal collisions and efficient URL resolution.
-            </li>
-            <li style="text-align: justify">
-              Developed a robust authentication system using JWT & API Gateway,
-              enabling secure, token-based access across distributed
-              microservices.
-            </li>
-          </ul>
-          <a
-            href="https://github.com/ravikumarmakwana/URL-Shortener"
-            target="_blank"
-            class="btn btn-sm btn-custom mt-2"
-            >GitHub Repository</a
-          >
-        </div>
-        <div class="project-card">
-          <h5>Sudoku Solver</h5>
-          <ul>
-            <li style="text-align: justify">
-              A web-based Sudoku solver application built with ASP.NET Core,
-              allowing users to input an unsolved Sudoku puzzle and receive the
-              solved output. The application uses a backtracking algorithm to
-              solve the puzzle, systematically attempting to place digits and
-              backtracking as needed to find a valid solution.
-            </li>
-          </ul>
-          <a
-            href="https://github.com/ravikumarmakwana/SudokuSolver"
-            target="_blank"
-            class="btn btn-sm btn-custom mt-2"
-            >GitHub Repository</a
-          >
-        </div>
-        <div class="project-card">
-          <h5>GroupBalancer</h5>
-          <ul>
-            <li style="text-align: justify">
-              Developed a C# GroupBalancer utility that dynamically assigns
-              individuals into groups based on predefined target percentages.
-            </li>
-            <li style="text-align: justify">
-              Utilizes a PriorityQueue to track and allocate people in
-              real-time, maintaining target group distributions.
-            </li>
-            <li style="text-align: justify">
-              The tool supports flexible group configurations and ensures
-              optimized resource allocation across various real-world
-              applications like surveys, event planning, and workload
-              distribution.
-            </li>
-          </ul>
-          <a
-            href="https://github.com/ravikumarmakwana/GroupBalancer"
-            target="_blank"
-            class="btn btn-sm btn-custom mt-2"
-            >GitHub Repository</a
-          >
-        </div>
-        <div class="project-card">
-          <h5>Collaborative Whiteboard App</h5>
-          <ul>
-            <li style="text-align: justify">
-              Collaborative whiteboard app allowing real-time drawing using
-              HTML/CSS/JS, Bootstrap for styling, and Socket.IO for live user
-              communication.
-            </li>
-            <li style="text-align: justify">
-              Real-Time Collaboration: Multiple users can draw together on the
-              same whiteboard simultaneously.
-            </li>
-            <li style="text-align: justify">
-              Customizable Drawing Tools: Users can choose different colors and
-              brush sizes for their drawings.
-            </li>
-            <li style="text-align: justify">
-              Eraser Mode: Includes an eraser mode for removing specific parts
-              of the drawing.
-            </li>
-            <li style="text-align: justify">
-              Room-based Interaction: Users can create new whiteboards or join
-              existing ones using unique room IDs.
-            </li>
-          </ul>
-          <a
-            href="https://github.com/ravikumarmakwana/Collaborative-Draw"
-            target="_blank"
-            class="btn btn-sm btn-custom mt-2"
-            >GitHub Repository</a
-          >
-        </div>
-        <div class="project-card">
-          <h5>QuickBank API</h5>
-          <ul>
-            <li style="text-align: justify">
-              The QuickBank API is designed to facilitate comprehensive banking
-              operations using ASP.NET Core 8 and Azure Functions.
-            </li>
-            <li style="text-align: justify">
-              Engineered a robust ASP.NET Core Web API, utilizing Layered
-              Architecture to enhance scalability and maintainability.
-            </li>
-            <li style="text-align: justify">
-              Created Azure Functions to automate essential banking operations,
-              including quarterly interest calculations, account status updates,
-              and fixed deposit management.
-            </li>
-            <li style="text-align: justify">
-              Implemented a comprehensive set of CRUD functionalities to
-              simulate essential banking operations, including customer
-              management, account operations, transaction handling, and fixed
-              deposit management.
-            </li>
-          </ul>
-          <a
-            href="https://github.com/ravikumarmakwana/QuickBank"
-            target="_blank"
-            class="btn btn-sm btn-custom mt-2"
-            >GitHub Repository</a
-          >
-        </div>
-      </div>
-    </section>
+          <div class="timeline">
+            <article class="timeline-card" data-reveal>
+              <h3>Senior Software Engineer - Zenoti</h3>
+              <span class="date">Nov 2025 - Present</span>
+              <ul>
+                <li>
+                  Enhanced Zenoti's marketing discount module to enable voucher
+                  and campaign usage per invoice, enforcing rule-based
+                  validation to prevent conflicts and streamline checkout for
+                  30K+ customers.
+                </li>
+              </ul>
+            </article>
 
-    <!-- EDUCATION SECTION -->
-    <section id="education">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="education-box">
-          <h5>Bachelor of Computer Engineering</h5>
-          <p>
-            Gujarat Technological University (V.V.P. Engineering College,
-            Rajkot) <br />2017 - 2021 <br /><b>CGPA: 9.80 / 10.0</b>
-          </p>
+            <article class="timeline-card" data-reveal>
+              <h3>Senior Software Engineer - Thinkbridge Software Pvt Ltd</h3>
+              <span class="date">Jun 2025 - Nov 2025</span>
+              <ul>
+                <li>
+                  <b>High-Volume ATS Integration using API Batch Processing:</b>
+                  Led the design and development of Bullhorn ATS integration
+                  into Compass using public APIs - built from scratch with the
+                  Factory Design Pattern and Microservices architecture,
+                  enabling seamless hiring and processing over 15,000 candidates
+                  daily.
+                </li>
+                <li>
+                  <b>Automated Candidate Engagement:</b> Simplified a core
+                  Compass function at the system level, overcoming Twilio SMS
+                  stateless limitations to ensure consistent response mapping
+                  and deliver a better user experience.
+                </li>
+              </ul>
+            </article>
+
+            <article class="timeline-card" data-reveal>
+              <h3>Software Engineer - Thinkbridge Software Pvt Ltd</h3>
+              <span class="date">Jun 2023 - May 2025</span>
+              <ul>
+                <li>
+                  <b>ATS Integration System:</b> Implemented scalable
+                  integration between ATS platforms (Bullhorn and iCIMS) and
+                  Compass using high-performance Webhook APIs, enabling seamless
+                  candidate data retrieval, reducing processing time by 60%, and
+                  enhancing system reliability.
+                </li>
+                <li>
+                  <b>Intelligent Email Parsing:</b> Led the design and
+                  development of an event-driven email parser that processes
+                  50,000+ applications weekly, reducing recruiters' manual
+                  workload by 90%.
+                </li>
+                <li>
+                  <b>Azure AD SSO Integration:</b> Implemented Single Sign-On
+                  (SSO) authentication using Azure AD OAuth2 & OpenID Connect,
+                  securing access for 2,000+ daily users.
+                </li>
+                <li>
+                  <b>High-Performance System Optimization:</b> Optimized
+                  third-party integrations (Modern Hire, Daxtra Search, Survale)
+                  to handle 10,000+ daily transactions with high availability
+                  and efficiency. Enhanced application performance by 45%
+                  through database query and code optimizations.
+                </li>
+                <li>
+                  <b>Event-Driven Asynchronous Processing:</b> Architected an
+                  Azure Functions-based event-driven system using message
+                  queues, reducing system latency by 30%.
+                </li>
+              </ul>
+            </article>
+
+            <article class="timeline-card" data-reveal>
+              <h3>Junior Software Engineer - Tark Technologies</h3>
+              <span class="date">Aug 2021 - Jun 2023</span>
+              <ul>
+                <li>
+                  <b>Real-Time Medical Systems Development:</b> Developed
+                  responsive dashboards and reports using ASP.NET Core Web API
+                  and Angular, provided healthcare providers with real-time
+                  insights to enhance data-driven decision-making.
+                </li>
+                <li>
+                  <b>Performance Tuning:</b> Identified bottlenecks using
+                  MiniProfiler, refined database queries, and accelerated query
+                  response times by 30%, leading to a significantly enhanced
+                  user experience and improved customer satisfaction.
+                </li>
+                <li>
+                  <b>Scalability Enhancements:</b> Upgraded Angular (v8 to v15)
+                  and .NET libraries (v4.7 to v6). Migrated MSSQL database to
+                  MySQL using Skeema.io and FlywayDB, enhancing scalability and
+                  reducing costs.
+                </li>
+                <li>
+                  <b>Cache System:</b> Led the Implementation of a distributed
+                  caching mechanism using Castle Core, significantly enhancing
+                  system performance under high traffic conditions.
+                </li>
+                <li>
+                  <b>Mentorship:</b> Supervised and mentored a team of 6
+                  interns, facilitating their professional growth and project
+                  contributions.
+                </li>
+              </ul>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="blog">
-      <div class="container">
-        <h2 class="section-title">Latest from My Blog</h2>
-        <div id="medium-posts" class="row g-4"></div>
+      <section id="projects">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <span class="kicker">Projects</span>
+            <h2 class="section-title">Selected builds.</h2>
+          </div>
 
-        <!-- Read More button -->
-        <div class="text-center mt-4">
-          <a
-            id="read-more-btn"
-            href="#"
-            target="_blank"
-            class="btn btn-custom px-4 py-2"
-          >
-            Read More →
-          </a>
-        </div>
-      </div>
-    </section>
+          <div class="project-grid">
+            <article class="project-card" data-reveal>
+              <div class="project-icon"><i class="fa-solid fa-link"></i></div>
+              <h3>URL Shortener</h3>
+              <ul>
+                <li>
+                  Engineered a high-performance URL Shortener using ASP.NET Core
+                  and Angular, leveraging microservices architecture for
+                  modularity, scalability, and fault tolerance.
+                </li>
+                <li>
+                  Implemented optimized Base62 encoding, enabling 900M+ unique
+                  short URLs, ensuring minimal collisions and efficient URL
+                  resolution.
+                </li>
+                <li>
+                  Developed a robust authentication system using JWT & API
+                  Gateway, enabling secure, token-based access across
+                  distributed microservices.
+                </li>
+              </ul>
+              <a
+                href="https://github.com/ravikumarmakwana/URL-Shortener"
+                target="_blank"
+                class="repo-link"
+              >
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </article>
 
-    <!-- Medium Blog Script -->
-    <script>
-      async function loadMediumPosts(username, count = 3) {
-        const feedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
-        const response = await fetch(feedUrl);
-        const data = await response.json();
-
-        const posts = data.items.slice(0, count);
-        const container = document.getElementById("medium-posts");
-
-        posts.forEach((post) => {
-          const col = document.createElement("div");
-          col.className = "col-md-4";
-
-          col.innerHTML = `
-          <div class="card h-100 shadow-sm border-0" style="border-left:4px solid #f72585;">
-            <a href="${
-              post.link
-            }" target="_blank" style="text-decoration:none; color:inherit;">
-              <div class="card-body">
-                <h5 class="card-title fw-bold" style="color:black;">${
-                  post.title
-                }</h5>
-                <p class="card-text" style="font-size:0.9rem; color:#555;">
-                  ${post.description.replace(/<[^>]+>/g, "").slice(0, 100)}...
-                </p>
-                <span class="text-primary fw-semibold">Read more →</span>
+            <article class="project-card" data-reveal>
+              <div class="project-icon">
+                <i class="fa-solid fa-table-cells"></i>
               </div>
+              <h3>Sudoku Solver</h3>
+              <p>
+                A web-based Sudoku solver application built with ASP.NET Core,
+                allowing users to input an unsolved Sudoku puzzle and receive
+                the solved output. The application uses a backtracking algorithm
+                to solve the puzzle, systematically attempting to place digits
+                and backtracking as needed to find a valid solution.
+              </p>
+              <a
+                href="https://github.com/ravikumarmakwana/SudokuSolver"
+                target="_blank"
+                class="repo-link"
+              >
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <div class="project-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <h3>GroupBalancer</h3>
+              <ul>
+                <li>
+                  Developed a C# GroupBalancer utility that dynamically assigns
+                  individuals into groups based on predefined target
+                  percentages.
+                </li>
+                <li>
+                  Utilizes a PriorityQueue to track and allocate people in
+                  real-time, maintaining target group distributions.
+                </li>
+                <li>
+                  The tool supports flexible group configurations and ensures
+                  optimized resource allocation across various real-world
+                  applications like surveys, event planning, and workload
+                  distribution.
+                </li>
+              </ul>
+              <a
+                href="https://github.com/ravikumarmakwana/GroupBalancer"
+                target="_blank"
+                class="repo-link"
+              >
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <div class="project-icon">
+                <i class="fa-solid fa-pen-nib"></i>
+              </div>
+              <h3>Collaborative Whiteboard</h3>
+              <ul>
+                <li>
+                  Collaborative whiteboard app allowing real-time drawing using
+                  HTML/CSS/JS, Bootstrap for styling, and Socket.IO for live
+                  user communication.
+                </li>
+                <li>
+                  Real-Time Collaboration: Multiple users can draw together on
+                  the same whiteboard simultaneously.
+                </li>
+                <li>
+                  Customizable Drawing Tools: Users can choose different colors
+                  and brush sizes for their drawings.
+                </li>
+                <li>
+                  Eraser Mode: Includes an eraser mode for removing specific
+                  parts of the drawing.
+                </li>
+                <li>
+                  Room-based Interaction: Users can create new whiteboards or
+                  join existing ones using unique room IDs.
+                </li>
+              </ul>
+              <a
+                href="https://github.com/ravikumarmakwana/Collaborative-Draw"
+                target="_blank"
+                class="repo-link"
+              >
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <div class="project-icon">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <h3>QuickBank API</h3>
+              <ul>
+                <li>
+                  The QuickBank API is designed to facilitate comprehensive
+                  banking operations using ASP.NET Core 8 and Azure Functions.
+                </li>
+                <li>
+                  Engineered a robust ASP.NET Core Web API, utilizing Layered
+                  Architecture to enhance scalability and maintainability.
+                </li>
+                <li>
+                  Created Azure Functions to automate essential banking
+                  operations, including quarterly interest calculations, account
+                  status updates, and fixed deposit management.
+                </li>
+                <li>
+                  Implemented a comprehensive set of CRUD functionalities to
+                  simulate essential banking operations, including customer
+                  management, account operations, transaction handling, and
+                  fixed deposit management.
+                </li>
+              </ul>
+              <a
+                href="https://github.com/ravikumarmakwana/QuickBank"
+                target="_blank"
+                class="repo-link"
+              >
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="shell">
+          <div class="education-card" data-reveal>
+            <div class="education-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <span class="kicker">Education</span>
+              <h3>Bachelor of Computer Engineering</h3>
+              <p class="section-lead">
+                Gujarat Technological University, V.V.P. Engineering College,
+                Rajkot &middot; 2017 - 2021
+              </p>
+            </div>
+            <div class="score">CGPA 9.80 / 10</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" class="blog-section">
+        <div class="shell">
+          <div class="section-head blog-head" data-reveal>
+            <div>
+              <span class="kicker">Writing</span>
+              <h2 class="section-title">Latest thoughts.</h2>
+            </div>
+            <a
+              id="read-more-btn"
+              href="https://medium.com/@ravikumar.makwana"
+              target="_blank"
+              class="medium-link"
+            >
+              <i class="fa-brands fa-medium"></i>
+              View all writing
             </a>
           </div>
-        `;
+        </div>
 
-          container.appendChild(col);
-        });
+        <div id="medium-posts" class="blog-marquee" aria-live="polite">
+          <div class="shell">
+            <div class="panel">
+              <strong>Loading Medium posts...</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        document.getElementById("read-more-btn").href =
-          `https://medium.com/@${username}`;
-      }
-
-      loadMediumPosts("ravikumar.makwana", 6);
-    </script>
-
-    <!-- FOOTER -->
     <footer>
-      Made with
-      <span style="color: #ff4d9e; font-size: 1.2rem">&#10084;&#65039;</span> by
-      Ravikumar Makwana
+      <div class="shell">
+        Made with <span class="heart">&#10084;</span> by Ravikumar Makwana
+      </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init();
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function formatPostDate(value) {
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return "Medium";
+        }
+
+        return date.toLocaleDateString("en", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      function buildPostCard(post) {
+        const description = (post.description || "")
+          .replace(/<[^>]+>/g, "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 132);
+
+        return `
+          <a class="blog-card" href="${escapeHtml(post.link)}" target="_blank">
+            <div class="blog-meta">
+              <span class="blog-date">${formatPostDate(post.pubDate)}</span>
+              <span class="blog-source">Medium</span>
+            </div>
+            <h3>${escapeHtml(post.title)}</h3>
+            <p>${escapeHtml(description)}...</p>
+            <span class="read">Read article <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        `;
+      }
+
+      async function loadMediumPosts(username) {
+        const container = document.getElementById("medium-posts");
+        const readMore = document.getElementById("read-more-btn");
+        readMore.href = `https://medium.com/@${username}`;
+
+        try {
+          const feedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
+          const response = await fetch(feedUrl);
+          const data = await response.json();
+          const posts = data.items || [];
+
+          if (!posts.length) {
+            throw new Error("No Medium posts returned");
+          }
+
+          const cards = posts.map(buildPostCard).join("");
+          const duration = Math.max(90, posts.length * 16);
+          container.style.setProperty("--marquee-duration", `${duration}s`);
+          container.innerHTML = `
+            <div class="blog-track">
+              ${cards}
+              ${cards}
+            </div>
+          `;
+        } catch (error) {
+          container.innerHTML = `
+            <div class="shell">
+              <div class="panel">
+                <strong>Medium posts are taking a break.</strong>
+                <p class="section-lead">Visit the blog directly to read the latest articles.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      loadMediumPosts("ravikumar.makwana");
+
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      if (!("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries, revealObserver) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      }
     </script>
   </body>
 </html>
