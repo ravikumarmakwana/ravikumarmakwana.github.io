@@ -739,14 +739,36 @@
       }
 
       .blog-section {
+        position: relative;
         overflow: hidden;
       }
 
+      .blog-section::before {
+        position: absolute;
+        inset: 8% 0 auto;
+        height: 72%;
+        pointer-events: none;
+        content: "";
+        background:
+          linear-gradient(
+            120deg,
+            rgba(59, 130, 246, 0.09),
+            rgba(20, 184, 166, 0.08) 48%,
+            rgba(245, 158, 11, 0.08)
+          );
+        opacity: 0.72;
+        transform: skewY(-2deg);
+      }
+
+      .blog-section .shell {
+        position: relative;
+      }
+
       .blog-head {
-        display: flex;
+        display: grid;
         gap: 1rem;
         align-items: end;
-        justify-content: space-between;
+        grid-template-columns: minmax(0, 1fr) auto;
       }
 
       .medium-link {
@@ -774,47 +796,26 @@
         box-shadow: 0 16px 38px rgba(59, 130, 246, 0.12);
       }
 
-      .blog-marquee {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(
-          90deg,
-          transparent,
-          #000 8%,
-          #000 92%,
-          transparent
-        );
-        mask-image: linear-gradient(
-          90deg,
-          transparent,
-          #000 8%,
-          #000 92%,
-          transparent
-        );
+      .blog-board {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
       }
 
-      .blog-track {
-        display: flex;
-        width: max-content;
-        gap: 0.8rem;
-        animation: marquee var(--marquee-duration, 105s) linear infinite;
-        backface-visibility: hidden;
-        transform: translate3d(0, 0, 0);
-        will-change: transform;
+      .blog-board.single-post {
+        grid-template-columns: 1fr;
       }
 
-      .blog-marquee:hover .blog-track {
-        animation-play-state: paused;
+      .blog-list {
+        display: grid;
+        gap: 1rem;
       }
 
       .blog-card {
         position: relative;
         display: flex;
-        width: min(360px, 84vw);
-        min-height: 246px;
-        padding: 1.18rem;
-        flex: 0 0 auto;
+        min-height: 238px;
+        padding: 1.15rem;
         flex-direction: column;
         border-radius: 22px;
         text-decoration: none;
@@ -833,6 +834,67 @@
         opacity: 0.82;
       }
 
+      .blog-card::after {
+        position: absolute;
+        inset: auto -18% -42% 44%;
+        height: 150px;
+        pointer-events: none;
+        content: "";
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.13),
+          transparent 70%
+        );
+      }
+
+      .blog-card.featured-post {
+        min-height: 100%;
+        padding: 1.25rem;
+      }
+
+      .blog-list .blog-card {
+        min-height: 188px;
+      }
+
+      .blog-list .blog-card h3,
+      .blog-list .blog-card p {
+        -webkit-line-clamp: 2;
+      }
+
+      .blog-visual {
+        position: relative;
+        display: grid;
+        min-height: 224px;
+        margin: -0.2rem -0.2rem 1.05rem;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid rgba(23, 32, 51, 0.08);
+        border-radius: 18px;
+        background:
+          linear-gradient(135deg, rgba(59, 130, 246, 0.16), transparent 52%),
+          linear-gradient(315deg, rgba(20, 184, 166, 0.14), transparent 54%),
+          rgba(255, 255, 255, 0.58);
+      }
+
+      .blog-visual img {
+        width: 100%;
+        height: 100%;
+        min-height: 224px;
+        object-fit: cover;
+      }
+
+      .blog-visual i {
+        color: rgba(59, 130, 246, 0.74);
+        font-size: 3rem;
+      }
+
+      .blog-card.featured-post h3 {
+        max-width: 620px;
+        font-size: clamp(1.35rem, 2.8vw, 2rem);
+        line-height: 1.16;
+        -webkit-line-clamp: 2;
+      }
+
       .blog-meta {
         display: flex;
         flex-wrap: wrap;
@@ -844,6 +906,11 @@
         font-weight: 800;
       }
 
+      .blog-card .blog-meta {
+        position: relative;
+        z-index: 1;
+      }
+
       .blog-date {
         width: fit-content;
         padding: 0.34rem 0.6rem;
@@ -851,8 +918,19 @@
         background: rgba(245, 158, 11, 0.12);
       }
 
-      .blog-source {
-        color: #7a5300;
+      .blog-source,
+      .blog-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.32rem;
+        color: #52706f;
+      }
+
+      .blog-card h3,
+      .blog-card p,
+      .read {
+        position: relative;
+        z-index: 1;
       }
 
       .read {
@@ -882,6 +960,15 @@
         background: rgba(59, 130, 246, 0.16);
       }
 
+      .blog-empty {
+        display: grid;
+        gap: 0.65rem;
+        min-height: 210px;
+        align-content: center;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border-radius: 24px;
+      }
+
       footer {
         padding: 28px 0;
         color: #667085;
@@ -890,15 +977,6 @@
 
       .heart {
         color: #ef4444;
-      }
-
-      @keyframes marquee {
-        from {
-          transform: translate3d(0, 0, 0);
-        }
-        to {
-          transform: translate3d(-50%, 0, 0);
-        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -920,7 +998,8 @@
       @media (max-width: 900px) {
         .hero-grid,
         .about-grid,
-        .project-grid {
+        .project-grid,
+        .blog-board {
           grid-template-columns: 1fr;
         }
 
@@ -1095,31 +1174,26 @@
         }
 
         .blog-head {
-          display: grid;
           align-items: start;
+          grid-template-columns: 1fr;
         }
 
-        .blog-marquee {
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            transparent,
-            #000 4%,
-            #000 96%,
-            transparent
-          );
-          mask-image: linear-gradient(
-            90deg,
-            transparent,
-            #000 4%,
-            #000 96%,
-            transparent
-          );
+        .blog-board,
+        .blog-list {
+          gap: 0.8rem;
         }
 
         .blog-card {
-          width: min(300px, 82vw);
-          min-height: 230px;
           padding: 1rem;
+        }
+
+        .blog-card.featured-post {
+          min-height: auto;
+        }
+
+        .blog-visual,
+        .blog-visual img {
+          min-height: 180px;
         }
       }
 
@@ -1635,6 +1709,10 @@
             <div>
               <span class="kicker">Writing</span>
               <h2 class="section-title">Latest thoughts.</h2>
+              <p class="section-lead">
+                Practical notes on engineering, cloud systems, and the lessons
+                that stick after shipping real products.
+              </p>
             </div>
             <a
               id="read-more-btn"
@@ -1648,11 +1726,9 @@
           </div>
         </div>
 
-        <div id="medium-posts" class="blog-marquee" aria-live="polite">
-          <div class="shell">
-            <div class="panel">
-              <strong>Loading Medium posts...</strong>
-            </div>
+        <div id="medium-posts" class="shell" aria-live="polite">
+          <div class="panel blog-empty">
+            <strong>Loading Medium posts...</strong>
           </div>
         </div>
       </section>
@@ -1687,21 +1763,50 @@
         });
       }
 
-      function buildPostCard(post) {
+      function getPostImage(post) {
+        if (post.thumbnail) {
+          return post.thumbnail;
+        }
+
+        const match = String(post.description || "").match(
+          /<img[^>]+src=["']([^"']+)["']/i,
+        );
+
+        return match ? match[1] : "";
+      }
+
+      function getPostTag(post) {
+        const categories = Array.isArray(post.categories)
+          ? post.categories.filter(Boolean)
+          : [];
+
+        return categories[0] || "Engineering";
+      }
+
+      function buildPostCard(post, isFeatured = false) {
         const description = (post.description || "")
           .replace(/<[^>]+>/g, "")
           .replace(/\s+/g, " ")
           .trim()
-          .slice(0, 132);
+          .slice(0, isFeatured ? 190 : 118);
+        const image = getPostImage(post);
+        const tag = getPostTag(post);
+        const visual = isFeatured
+          ? image
+            ? `<div class="blog-visual"><img src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy"></div>`
+            : `<div class="blog-visual"><i class="fa-brands fa-medium"></i></div>`
+          : "";
 
         return `
-          <a class="blog-card" href="${escapeHtml(post.link)}" target="_blank">
+          <a class="blog-card${isFeatured ? " featured-post" : ""}" href="${escapeHtml(post.link)}" target="_blank" rel="noopener">
+            ${visual}
             <div class="blog-meta">
               <span class="blog-date">${formatPostDate(post.pubDate)}</span>
-              <span class="blog-source">Medium</span>
+              <span class="blog-source"><i class="fa-brands fa-medium"></i> Medium</span>
+              <span class="blog-tag"><i class="fa-solid fa-tag"></i> ${escapeHtml(tag)}</span>
             </div>
             <h3>${escapeHtml(post.title)}</h3>
-            <p>${escapeHtml(description)}...</p>
+            <p>${escapeHtml(description)}${description ? "..." : ""}</p>
             <span class="read">Read article <i class="fa-solid fa-arrow-right"></i></span>
           </a>
         `;
@@ -1722,22 +1827,33 @@
             throw new Error("No Medium posts returned");
           }
 
-          const cards = posts.map(buildPostCard).join("");
-          const duration = Math.max(90, posts.length * 16);
-          container.style.setProperty("--marquee-duration", `${duration}s`);
+          const featured = posts[0];
+          const supportingPosts = posts.slice(1, 4);
+          const supportingCards = supportingPosts
+            .map((post) => buildPostCard(post))
+            .join("");
+          const supportingList = supportingCards
+            ? `<div class="blog-list">${supportingCards}</div>`
+            : "";
+
           container.innerHTML = `
-            <div class="blog-track">
-              ${cards}
-              ${cards}
+            <div class="blog-board${supportingCards ? "" : " single-post"}" data-reveal>
+              ${buildPostCard(featured, true)}
+              ${supportingList}
             </div>
           `;
+
+          requestAnimationFrame(() => {
+            container
+              .querySelectorAll("[data-reveal]")
+              .forEach((item) => item.classList.add("is-visible"));
+          });
         } catch (error) {
           container.innerHTML = `
-            <div class="shell">
-              <div class="panel">
-                <strong>Medium posts are taking a break.</strong>
-                <p class="section-lead">Visit the blog directly to read the latest articles.</p>
-              </div>
+            <div class="panel blog-empty">
+              <span class="kicker">Writing</span>
+              <strong>Medium posts are taking a break.</strong>
+              <p class="section-lead">Visit the blog directly to read the latest articles.</p>
             </div>
           `;
         }
