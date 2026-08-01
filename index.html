@@ -101,6 +101,124 @@
         transform: translate3d(0, 0, 0);
       }
 
+      body.intro-active {
+        overflow: hidden;
+      }
+
+      body.intro-active main,
+      body.intro-active footer {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0);
+      }
+
+      main,
+      footer {
+        transition:
+          opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .search-intro {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        padding: 1.4rem;
+        background:
+          radial-gradient(
+            circle at 50% 42%,
+            rgba(59, 130, 246, 0.16),
+            transparent 24rem
+          ),
+          linear-gradient(180deg, rgba(247, 244, 239, 0.96), #f9fbff);
+        transition:
+          opacity 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.64s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .search-intro.is-complete {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate3d(0, -22px, 0) scale(0.98);
+      }
+
+      .intro-search {
+        width: min(680px, 100%);
+        transform-origin: center;
+        transition:
+          opacity 0.54s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.74s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .search-intro.is-traveling .intro-search {
+        opacity: 0.24;
+        transform: translate3d(var(--intro-x, 0), var(--intro-y, 0), 0)
+          scale(var(--intro-scale, 1));
+      }
+
+      .intro-search .search-bar {
+        min-height: 66px;
+        padding: 0.78rem 0.95rem;
+      }
+
+      .intro-query {
+        display: inline-flex;
+        align-items: center;
+        min-height: 1.4em;
+      }
+
+      .intro-query::after {
+        width: 2px;
+        height: 1.15em;
+        margin-left: 0.14rem;
+        content: "";
+        background: var(--accent);
+        animation: caretBlink 0.8s steps(1) infinite;
+      }
+
+      .intro-status {
+        display: flex;
+        gap: 0.55rem;
+        align-items: center;
+        min-height: 1.5rem;
+        margin: 0.9rem 0 0 1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+        opacity: 0;
+        transform: translate3d(0, -4px, 0);
+        transition:
+          opacity 0.24s ease,
+          transform 0.24s ease;
+      }
+
+      .intro-status.is-visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .intro-spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        border-top-color: var(--accent);
+        border-radius: 999px;
+        animation: spin 0.76s linear infinite;
+      }
+
+      @keyframes caretBlink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
       .hero {
         min-height: 88vh;
         padding: clamp(28px, 5vw, 54px) 0 64px;
@@ -1010,6 +1128,20 @@
           opacity: 1 !important;
           transform: none !important;
         }
+
+        body.intro-active {
+          overflow: auto;
+        }
+
+        body.intro-active main,
+        body.intro-active footer {
+          opacity: 1;
+          transform: none;
+        }
+
+        .search-intro {
+          display: none;
+        }
       }
 
       @media (max-width: 900px) {
@@ -1237,9 +1369,40 @@
         }
       }
     </style>
+    <noscript>
+      <style>
+        body.intro-active {
+          overflow: auto;
+        }
+
+        body.intro-active main,
+        body.intro-active footer {
+          opacity: 1;
+          transform: none;
+        }
+
+        .search-intro {
+          display: none;
+        }
+      </style>
+    </noscript>
   </head>
 
-  <body>
+  <body class="intro-active">
+    <div class="search-intro" id="search-intro" aria-live="polite">
+      <div class="intro-search">
+        <div class="search-bar" aria-label="Intro search query">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="query intro-query" id="intro-query"></div>
+          <div class="search-key">Go</div>
+        </div>
+        <div class="intro-status" id="intro-status">
+          <span class="intro-spinner" aria-hidden="true"></span>
+          Searching profile
+        </div>
+      </div>
+    </div>
+
     <main>
       <section class="hero">
         <div class="shell hero-grid">
@@ -1900,6 +2063,74 @@
         }
       }
 
+      function runSearchIntro() {
+        const intro = document.getElementById("search-intro");
+        const introSearch = intro?.querySelector(".intro-search");
+        const query = document.getElementById("intro-query");
+        const status = document.getElementById("intro-status");
+        const finalQuery = "Who is Ravikumar Makwana?";
+        const reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!intro || !introSearch || !query || !status || reduceMotion) {
+          document.body.classList.remove("intro-active");
+          intro?.remove();
+          return;
+        }
+
+        const sendSearchToHero = () => {
+          const targetSearch = document.querySelector(
+            ".search-page .search-bar",
+          );
+
+          if (!targetSearch) {
+            return;
+          }
+
+          const start = introSearch.getBoundingClientRect();
+          const target = targetSearch.getBoundingClientRect();
+          const x =
+            target.left + target.width / 2 - (start.left + start.width / 2);
+          const y =
+            target.top + target.height / 2 - (start.top + start.height / 2);
+          const scale = Math.min(1, target.width / start.width);
+
+          intro.style.setProperty("--intro-x", `${x}px`);
+          intro.style.setProperty("--intro-y", `${y}px`);
+          intro.style.setProperty("--intro-scale", scale.toFixed(3));
+          intro.classList.add("is-traveling");
+        };
+
+        let index = 0;
+        const typeNextLetter = () => {
+          query.textContent = finalQuery.slice(0, index);
+          index += 1;
+
+          if (index <= finalQuery.length) {
+            window.setTimeout(typeNextLetter, 64);
+            return;
+          }
+
+          window.setTimeout(() => {
+            status.classList.add("is-visible");
+          }, 180);
+
+          window.setTimeout(() => {
+            document.body.classList.remove("intro-active");
+            sendSearchToHero();
+            intro.classList.add("is-complete");
+          }, 1120);
+
+          window.setTimeout(() => {
+            intro.remove();
+          }, 1900);
+        };
+
+        window.setTimeout(typeNextLetter, 420);
+      }
+
+      runSearchIntro();
       loadMediumPosts("ravikumar.makwana");
 
       const revealItems = document.querySelectorAll("[data-reveal]");
