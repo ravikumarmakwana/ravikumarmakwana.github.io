@@ -649,8 +649,24 @@
 
       .about-grid {
         display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+      }
+
+      .about-content {
+        display: grid;
         gap: 1rem;
         grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .about-column {
+        min-width: 0;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
       }
 
       .panel {
@@ -659,6 +675,30 @@
       }
 
       .panel p {
+        color: #43516a;
+        line-height: 1.76;
+      }
+
+      .about-column h3 {
+        margin: 1.5rem 0 0.65rem;
+        color: var(--ink);
+        font-size: 1.08rem;
+      }
+
+      .about-column h3:first-child {
+        margin-top: 0;
+      }
+
+      .about-column ul {
+        display: grid;
+        gap: 0.55rem;
+        margin: 0;
+        padding-left: 1.2rem;
+        color: #43516a;
+        line-height: 1.65;
+      }
+
+      .about-column p {
         color: #43516a;
         line-height: 1.76;
       }
@@ -1030,6 +1070,10 @@
         -webkit-line-clamp: 2;
       }
 
+      .blog-card.featured-post p {
+        -webkit-line-clamp: 6;
+      }
+
       .blog-meta {
         display: flex;
         flex-wrap: wrap;
@@ -1147,6 +1191,7 @@
       @media (max-width: 900px) {
         .hero-grid,
         .about-grid,
+        .about-content,
         .project-grid,
         .blog-board {
           grid-template-columns: 1fr;
@@ -1189,6 +1234,29 @@
 
         section {
           padding: 52px 0;
+        }
+
+        .about-grid {
+          gap: 1rem;
+        }
+
+        .about-content {
+          gap: 0.8rem;
+        }
+
+        .about-column {
+          padding: 1.1rem;
+          border-radius: 18px;
+        }
+
+        .about-column p,
+        .about-column ul {
+          font-size: 0.94rem;
+          line-height: 1.68;
+        }
+
+        .about-column h3 {
+          margin-top: 1.25rem;
         }
 
         .hero h1 {
@@ -1338,6 +1406,10 @@
 
         .blog-card.featured-post {
           min-height: auto;
+        }
+
+        .blog-card.featured-post p {
+          -webkit-line-clamp: 4;
         }
 
         .blog-visual,
@@ -1526,26 +1598,53 @@
               Thoughtful engineering, practical delivery.
             </h2>
           </div>
-          <div class="panel" data-reveal>
-            <p>
-              I'm a quick learner and self-motivated Software Engineer with over
-              5 years of experience. I specialize in C# programming and
-              structured test-driven software development. I solve complex
-              problems and deliver high-quality solutions that meet customers'
-              needs.
-            </p>
-            <p>
-              I'm most comfortable with C#, .NET Core, and relational databases
-              like MySQL and MSSQL, but I'm also flexible and eager to work with
-              new technologies and programming languages.
-            </p>
-            <p>
-              I thrive in collaborative environments and enjoy working closely
-              with fellow engineers and stakeholders to deliver solutions that
-              exceed expectations. Whether it's optimizing performance,
-              architecting robust systems, or tackling challenging problems, I'm
-              always up for the task.
-            </p>
+          <div class="about-content" data-reveal>
+            <article class="about-column">
+              <p>
+                I'm a Software Engineer with 5+ years of experience designing
+                and building scalable, reliable, and high-performance software
+                systems. My core expertise lies in C#, .NET, backend engineering,
+                distributed systems, microservices, and cloud-based application
+                development.
+              </p>
+              <p>
+                I enjoy solving complex technical challenges, designing scalable
+                architectures, improving system performance, and building
+                reliable software solutions.
+              </p>
+              <h3>Engineering Mindset</h3>
+              <p>
+                I believe in building software that is not just functional but
+                also scalable, maintainable, and reliable. I value clean code,
+                thoughtful system design, engineering best practices, and
+                informed technical trade-offs.
+              </p>
+              <p>
+                I enjoy taking ownership of challenging problems and
+                collaborating with cross-functional teams to deliver solutions
+                end-to-end, from design and development to production.
+              </p>
+              <p>
+                I'm passionate about backend engineering, distributed systems,
+                system design, performance optimization, and continuously
+                exploring emerging technologies.
+              </p>
+            </article>
+            <article class="about-column">
+              <h3>AI-Driven Engineering</h3>
+              <p>
+                I actively incorporate AI into my everyday engineering workflow
+                to improve development efficiency, accelerate problem-solving,
+                and automate repetitive tasks.
+              </p>
+              <ul>
+                <li>Use Claude and Claude Code for feature development, debugging, codebase analysis, and resolving customer-reported issues and production defects.</li>
+                <li>Leverage AI to investigate root causes, understand complex codebases, and identify potential solutions.</li>
+                <li>Design custom AI-powered skills and workflows to automate repetitive engineering activities.</li>
+                <li>Build and configure scheduled AI tasks to automate recurring engineering activities and streamline workflows.</li>
+                <li>Leverage AI-assisted development for code reviews, refactoring, unit test generation, and feature planning.</li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
@@ -1560,6 +1659,7 @@
             <span><i class="fa-solid fa-code"></i>C#</span>
             <span><i class="fa-solid fa-database"></i>SQL</span>
             <span><i class="fa-brands fa-js"></i>JavaScript</span>
+            <span><i class="fa-solid fa-robot"></i>Claude</span>
             <span><i class="fa-solid fa-server"></i>ASP.NET Core Web API</span>
             <span><i class="fa-solid fa-layer-group"></i>Entity Framework</span>
             <span><i class="fa-solid fa-route"></i>Dapper</span>
@@ -1623,6 +1723,12 @@
                   Resolved a critical data integrity issue caused by a feature
                   defect, leading the remediation effort to correct corrupted
                   guest information across 1M+ guest records.
+                </li>
+                <li>
+                  Leveraged Claude and Claude Code throughout the software
+                  development lifecycle for feature planning, brainstorming,
+                  codebase analysis, implementation, refactoring, debugging,
+                  root-cause analysis, unit test generation, and code reviews.
                 </li>
               </ul>
             </article>
@@ -1997,7 +2103,7 @@
           .replace(/<[^>]+>/g, "")
           .replace(/\s+/g, " ")
           .trim()
-          .slice(0, isFeatured ? 190 : 118);
+          .slice(0, isFeatured ? 420 : 118);
         const image = getPostImage(post);
         const tag = getPostTag(post);
         const visual = isFeatured
